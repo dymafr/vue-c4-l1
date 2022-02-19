@@ -13,8 +13,9 @@ const proxy = new Proxy(obj, {
     return obj[prop];
   },
   set(obj, prop) {
-    render();
     obj[prop] = value;
+    render();
+    return true;
   },
 });
 
