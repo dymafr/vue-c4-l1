@@ -1,23 +1,23 @@
-<template>
-  <h1 @click="userClick.left.once">Bonjour tout le monde !</h1>
-
-  <form @submit.prevent="formSubmit">
-    <button>Envoyer</button>
-  </form>
-
-  <input type="text" @keyup.enter="handleEnter()" />
-</template>
+<template></template>
 
 <script setup lang="ts">
-function userClick(event: MouseEvent) {
-  console.log(event);
+const obj = { prenom: 'Jean', age: 12 };
+function render() {
+  console.log('Mise à jour du template par Vue.js');
 }
-function formSubmit() {
-  console.log('Envoyé');
-}
-function handleEnter() {
-  console.log('Entrée');
-}
+
+const proxy = new Proxy(obj, {
+  get(obj, prop) {
+    render();
+    return obj[prop];
+  },
+  set(obj, prop) {
+    render();
+    return obj[prop];
+  },
+});
+
+console.log(proxy.name);
 </script>
 
 <style></style>
