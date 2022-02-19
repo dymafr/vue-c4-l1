@@ -2,6 +2,7 @@
 
 <script setup lang="ts">
 const obj = { prenom: 'Jean', age: 12 };
+
 function render() {
   console.log('Mise à jour du template par Vue.js');
 }
@@ -13,11 +14,11 @@ const proxy = new Proxy(obj, {
   },
   set(obj, prop) {
     render();
-    return obj[prop];
+    obj[prop] = value;
   },
 });
 
-console.log(proxy.name);
+console.log(proxy.prenom);
 </script>
 
 <style></style>
