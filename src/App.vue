@@ -12,7 +12,7 @@ const proxy = new Proxy(obj, {
     render();
     return obj[prop];
   },
-  set(obj, prop) {
+  set(obj, prop, value) {
     obj[prop] = value;
     render();
     return true;
